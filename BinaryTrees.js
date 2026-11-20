@@ -61,4 +61,16 @@ export default class Tree {
         const unique = [...new Set(sorted)];
         return this.#build(unique, 0, unique.length-1)
     }
+
+    includes(value) {
+        let tmp = this.root;
+        if(tmp === null) return false;
+        while(tmp !== null) {
+            if(value === tmp.data) return true;
+            if(value < tmp.data) tmp = tmp.left;
+            else tmp = tmp.right;
+        }
+        return false;
+    }
+
 }
