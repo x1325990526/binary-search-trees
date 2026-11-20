@@ -38,10 +38,22 @@ function mergeSort(arr, l = 0, h = arr.length - 1) {
 
 
 export default class Tree {
+    
     constructor(arr) {
         this.root = this.buildTree(arr);
     }
+
     #build(arr, start, end) {
+        if (start > end) return null;
+
+        let mid = Math.floor(start + (end - start) / 2);
+        let root = new Node(arr[mid]);
+
+        // Divide from middle element
+        root.left = this.#build(arr, start, mid - 1);
+        root.right = this.#build(arr, mid + 1, end);
+
+        return root;
 
     }
     buildTree(arr) {
