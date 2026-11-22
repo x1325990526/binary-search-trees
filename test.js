@@ -13,5 +13,11 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 const arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 const tree = new Tree(arr);
 
-prettyPrint(tree.root);
-console.log(tree.includes(8));
+// prettyPrint(tree.root);
+// console.log(tree.includes(8));
+// tree.insert(67);
+// prettyPrint(tree.root);
+
+const tree2 = new Tree([]);
+tree2.insert(1);
+prettyPrint(tree2.root);
