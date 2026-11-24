@@ -16,6 +16,8 @@ const tree = new Tree(arr);
 prettyPrint(tree.root);
 // console.log(tree.includes(8));
 // tree.insert(67);
-tree.deleteItem(8);
-prettyPrint(tree.root);
+// tree.deleteItem(8);
+// prettyPrint(tree.root);
+tree.levelOrderForEach(console.log);
+
 

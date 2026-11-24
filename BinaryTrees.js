@@ -123,5 +123,20 @@ export default class Tree {
         return root;
     }
 
+    levelOrderForEach(callback) {
+
+        if(typeof callback !== 'function') throw new TypeError("need callback function");
+        if(this.root === null) return;
+        const queue = [];
+        queue.push(this.root);
+        let head = 0;
+        while(head < queue.length) {
+            const node = queue[head++];
+            callback(node.data);
+            if(node.left !== null) queue.push(node.left);
+            if(node.right !== null) queue.push(node.right);
+        }
+    }
+
 
 }
