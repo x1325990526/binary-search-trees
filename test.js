@@ -18,6 +18,8 @@ prettyPrint(tree.root);
 // tree.insert(67);
 tree.deleteItem(8);
 prettyPrint(tree.root);
-tree.levelOrderForEach(console.log);
-
-
+// tree.inOrderForEach(console.log);
+// console.log("-----------------")
+// tree.preOrderForEach(console.log);
+// console.log("-----------------")
+// tree.postOrderForEach(console.log);
