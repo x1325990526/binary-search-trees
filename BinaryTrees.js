@@ -93,21 +93,22 @@ export default class Tree {
 
         return this.root;
     }
-    getSuccessor(curr) {
-    curr = curr.right;
-    while (curr !== null && curr.left !== null)
-        curr = curr.left;
-    return curr;
-    }
+        getSuccessor(curr) {
+        curr = curr.right;
+        while (curr !== null && curr.left !== null)
+            curr = curr.left;
+        return curr;
+        }
 
-    deleteItem(value, root = this.root) {
+
+    #delete(value, root) {
         if (root === null)
             return root;
 
         if (root.data > value)
-            root.left = this.deleteItem(value, root.left);
+            root.left = this.#delete(value, root.left);
         else if (root.data < value)
-            root.right = this.deleteItem(value, root.right);
+            root.right = this.#delete(value, root.right);
         else {
             // Node with 0 or 1 child
             if (root.left === null)
@@ -118,9 +119,14 @@ export default class Tree {
             // Node with 2 children
             const succ = this.getSuccessor(root);
             root.data = succ.data;
-            root.right = this.deleteItem(succ.data, root.right);
+            root.right = this.#delete(succ.data, root.right);
         }
         return root;
+    }
+
+    deleteItem(value) {
+        this.root = this.#delete(value, this.root);
+        return this.root;
     }
 
     levelOrderForEach(callback) {
