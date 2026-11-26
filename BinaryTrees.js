@@ -168,5 +168,46 @@ export default class Tree {
         callback(root.data);
     }
 
+    height(value) {
+        if(this.root === null) return;
+        
+        let cur = this.root;
+
+        while(cur !== null) {
+            if(cur.data === value) {
+                return this.#nodeHeight(cur);
+            }
+            else if(cur.data > value && cur.left !== null) cur = cur.left;
+            else if(cur.data < value && cur.right !== null) cur = cur.right;
+            else break;
+        }
+
+        return;
+    }
+
+    #nodeHeight(node) {
+        if(node === null) return -1;
+        const left = this.#nodeHeight(node.left);
+        const right = this.#nodeHeight(node.right);
+        return 1 + Math.max(left, right);
+    }
+
+    depth(value) {
+        if(this.root === null) return;
+        
+        let cur = this.root;
+        let count = 0;
+        while(cur !== null) {
+            if(cur.data === value) {
+                return count;
+            }
+            else if(cur.data > value && cur.left !== null) {cur = cur.left; count++;}
+            else if(cur.data < value && cur.right !== null){ cur = cur.right; count++;}
+            else break;
+        }
+
+        return;
+    }
+
 
 }

@@ -16,8 +16,15 @@ const tree = new Tree(arr);
 prettyPrint(tree.root);
 // console.log(tree.includes(8));
 // tree.insert(67);
-tree.deleteItem(8);
+
+
+console.log(tree.depth(8))
+console.log(tree.height(8))
+
+tree.insert(123456)
+tree.insert(1234567)
 prettyPrint(tree.root);
+
 // tree.inOrderForEach(console.log);
 // console.log("-----------------")
 // tree.preOrderForEach(console.log);
