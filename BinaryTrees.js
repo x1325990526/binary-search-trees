@@ -208,6 +208,29 @@ export default class Tree {
 
         return;
     }
+    isBalanced(root = this.root) {
+        if(root === null) return true;
+        const diff = this.#nodeHeight(root.left) - this.#nodeHeight(root.right);
+        return (Math.abs(diff) <= 1
+                && this.isBalanced(root.left)
+                && this.isBalanced(root.right));
 
+    }
+    inOrderArr(root = this.root, arr = []) {
+        if(root === null) return arr;
+        this.inOrderArr(root.left, arr);
+        arr.push(root.data);
+        this.inOrderArr(root.right, arr);
+
+        return arr;
+
+    }
+    rebalance() {
+        if(!this.isBalanced()) {
+            const orderArr = this.inOrderArr();
+            this.root = this.#build(orderArr, 0, orderArr.length - 1);
+        }
+        return this.root;
+    }
 
 }
